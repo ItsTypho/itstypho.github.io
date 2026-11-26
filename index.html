@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyler Vore | ItsTypho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #121620;
+      --surface-hover: #171c29;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --radius: 14px;
+      --max-w: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Top Bar ---------- */
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-handle {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.875rem;
+      background: var(--accent-soft);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.5vw, 3.35rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06121a;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background: #67cefa;
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    /* ---------- Skills Grid ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #d1d5db;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ---------- Work / Image Gallery ---------- */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .work-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .work-card.hidden {
+      display: none;
+    }
+
+    .work-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #181d29;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .work-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .work-card:hover .work-thumb img {
+      transform: scale(1.03);
+    }
+
+    .work-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 16px;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 60%);
+    }
+
+    .work-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: rgba(11, 13, 18, 0.78);
+      backdrop-filter: blur(6px);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .work-body {
+      padding: 18px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .work-body h3 {
+      font-size: 1.04rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .work-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .work-meta {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ---------- Contact / Footer ---------- */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ---------- Lightbox Modal ---------- */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(5, 7, 10, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 24px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 860px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-media {
+      background: #080a0e;
+      max-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-media img {
+      width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-info {
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .modal-info h3 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .modal-info p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 0 40px; }
+      .section { padding: 48px 0; }
+      .contact-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span>Tyler Vore</span>
+        <span class="brand-handle">@ItsTypho</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Available for projects &amp; collaborations
+      </div>
+      <h1>
+        Crafting <span>clean visual experiences</span>, live broadcasts &amp; interactive media.
+      </h1>
+      <p class="hero-desc">
+        I’m Tyler Vore (ItsTypho) — specializing in esports broadcast observing, 3D / real-time environments, and digital media production. Below is a look at my core skills and recent work.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Capabilities</div>
+          <h2 class="section-title">Skills &amp; Tools</h2>
+        </div>
+        <p class="section-sub">
+          Edit these cards to match your exact focus areas and software stack.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Broadcast &amp; Observing</h3>
+          <p>Live tournament camera direction, storytelling, and clean in-game spectating under pressure.</p>
+          <div class="tag-list">
+            <span class="tag">CS2 Observing</span>
+            <span class="tag">OBS Studio</span>
+            <span class="tag">HUD / Replay Flow</span>
+            <span class="tag">Live Production</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>3D &amp; Real-Time Design</h3>
+          <p>Building environments, lighting scenes, and real-time visuals for games and showcases.</p>
+          <div class="tag-list">
+            <span class="tag">Unreal Engine 5</span>
+            <span class="tag">Level Design</span>
+            <span class="tag">Lighting &amp; Shaders</span>
+            <span class="tag">Asset Pipeline</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>Media &amp; Visual Production</h3>
+          <p>Editing highlight reels, motion assets, thumbnails, and cohesive graphics packages.</p>
+          <div class="tag-list">
+            <span class="tag">Video Editing</span>
+            <span class="tag">Color &amp; Composition</span>
+            <span class="tag">Graphic Design</span>
+            <span class="tag">Content Strategy</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>Team &amp; Program Leadership</h3>
+          <p>Coaching competitive rosters, coordinating events, and managing community operations.</p>
+          <div class="tag-list">
+            <span class="tag">Coaching</span>
+            <span class="tag">Event Ops</span>
+            <span class="tag">VOD Review</span>
+            <span class="tag">Project Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work / Image Gallery Section -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Portfolio</div>
+          <h2 class="section-title">Selected Work</h2>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="filter-bar" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="broadcast">Broadcast</button>
+          <button class="filter-btn" data-filter="3d">3D / Unreal</button>
+          <button class="filter-btn" data-filter="design">Design &amp; Media</button>
+        </div>
+      </div>
+
+      <div class="work-grid">
+        <!-- PROJECT CARD 1: Replace the img src with your image URL -->
+        <article class="work-card" data-category="broadcast">
+          <div class="work-thumb">
+            <!-- Replace src="" with your hosted image URL -->
+            <img
+              src=""
+              alt="Project 1 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 1 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">Broadcast</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Tournament Broadcast &amp; Observing</h3>
+              <p>Live match observing and camera work for competitive Counter-Strike broadcasts.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 2 -->
+        <article class="work-card" data-category="3d">
+          <div class="work-thumb">
+            <img
+              src=""
+              alt="Project 2 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 2 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">3D / Unreal</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Unreal Engine Environment Study</h3>
+              <p>Real-time lighting, composition, and environment showcase built in UE5.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 3 -->
+        <article class="work-card" data-category="design">
+          <div class="work-thumb">
+            <img
+              src=""
+              alt="Project 3 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 3 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">Design &amp; Media</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Esports Branding &amp; Event Graphics</h3>
+              <p>Matchday graphics, stream overlays, and promotional visuals.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 4 -->
+        <article class="work-card" data-category="broadcast">
+          <div class="work-thumb">
+            <img
+              src=""
+              alt="Project 4 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 4 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">Broadcast</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Collegiate Esports Production</h3>
+              <p>Broadcast setup, coaching support, and media production for team events.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 5 -->
+        <article class="work-card" data-category="3d">
+          <div class="work-thumb">
+            <img
+              src=""
+              alt="Project 5 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 5 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">3D / Unreal</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Custom Scene / Map Blockout</h3>
+              <p>Layout iteration, sightline testing, and visual polish for playable spaces.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 6 -->
+        <article class="work-card" data-category="design">
+          <div class="work-thumb">
+            <img
+              src=""
+              alt="Project 6 Preview"
+              onerror="this.style.display='none';"
+            />
+            <div class="work-placeholder">
+              <strong>Image Slot 6 (16:10)</strong>
+              <span>Paste your image URL in the &lt;img src="..."&gt;</span>
+            </div>
+            <span class="work-badge">Design &amp; Media</span>
+          </div>
+          <div class="work-body">
+            <div>
+              <h3>Video &amp; Highlight Production</h3>
+              <p>Edited feature pieces, interviews, and competitive highlight packages.</p>
+            </div>
+            <span class="work-meta">Click to expand image &rarr;</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section" style="border-bottom: none;">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <h2>Let’s work together</h2>
+          <p>Reach out for broadcast observing, creative production, or project inquiries.</p>
+        </div>
+
+        <div class="social-row">
+          <button class="btn btn-primary" id="copyEmailBtn" data-email="contact@tylervore.com">
+            Copy Email
+          </button>
+          <a class="btn btn-secondary" href="https://twitch.tv/itstypho" target="_blank" rel="noopener noreferrer">
+            Twitch
+          </a>
+          <a class="btn btn-secondary" href="https://x.com/ItsTypho" target="_blank" rel="noopener noreferrer">
+            X / Twitter
+          </a>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>&copy; <span id="year"></span> Tyler Vore (ItsTypho)</span>
+        <span>Built cleanly for tylervore.com</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Work Images -->
+  <div class="modal-backdrop" id="lightboxModal" aria-hidden="true">
+    <div class="modal-card" id="modalCard">
+      <div class="modal-media" id="modalMedia">
+        <img id="modalImg" src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <div>
+          <h3 id="modalTitle">Project Title</h3>
+          <p id="modalDesc">Project description.</p>
+        </div>
+        <button class="modal-close" id="modalCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Hide placeholder overlay automatically whenever an image loads successfully
+    document.querySelectorAll(".work-thumb img").forEach((img) => {
+      if (img.getAttribute("src")) {
+        img.addEventListener("load", () => {
+          const ph = img.parentElement.querySelector(".work-placeholder");
+          if (ph) ph.style.display = "none";
+        });
+      } else {
+        img.style.display = "none";
+      }
+    });
+
+    // Category filtering
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const workCards = document.querySelectorAll(".work-card");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+        workCards.forEach((card) => {
+          const match = filter === "all" || card.dataset.category === filter;
+          card.classList.toggle("hidden", !match);
+        });
+      });
+    });
+
+    // Lightbox modal (anchored near clicked card so it stays visible inside Google Sites embeds)
+    const modal = document.getElementById("lightboxModal");
+    const modalCard = document.getElementById("modalCard");
+    const modalMedia = document.getElementById("modalMedia");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+    workCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        const src = img ? img.getAttribute("src") : "";
+        const title = card.querySelector("h3").textContent;
+        const desc = card.querySelector("p").textContent;
+
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+
+        if (src && img.style.display !== "none") {
+          modalImg.src = src;
+          modalImg.alt = title;
+          modalMedia.style.display = "flex";
+        } else {
+          modalMedia.style.display = "none";
+        }
+
+        // Position near the card's vertical location inside the embed
+        const rect = card.getBoundingClientRect();
+        const maxTop = Math.max(24, document.documentElement.scrollHeight - 520);
+        const topOffset = Math.max(24, Math.min(rect.top - 40, maxTop));
+        modalCard.style.marginTop = topOffset + "px";
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    modalCloseBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Copy email button (with fallback for sandboxed iframes)
+    const copyBtn = document.getElementById("copyEmailBtn");
+    copyBtn.addEventListener("click", () => {
+      const email = copyBtn.dataset.email;
+      const done = () => {
+        copyBtn.textContent = "Copied: " + email;
+        setTimeout(() => (copyBtn.textContent = "Copy Email"), 2500);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(done).catch(() => fallbackCopy(email, done));
+      } else {
+        fallbackCopy(email, done);
+      }
+    });
+
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      cb();
+    }
+  </script>
+</body>
+</html>
